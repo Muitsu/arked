@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:muitsu_arked/constants/assets_bg.dart';
-import 'package:muitsu_arked/constants/assets_color.dart';
+import 'package:muitsu_arked/config/constants/others/assets_bg.dart';
+import 'package:muitsu_arked/config/constants/others/assets_color.dart';
 import 'package:muitsu_arked/games/rps_game/rps_game_utils.dart';
 import 'package:muitsu_arked/games/rps_game/widgets/rps_character.dart';
 import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
 import 'package:muitsu_arked/games/rps_game/widgets/rps_healthbar.dart';
 import 'package:muitsu_arked/games/rps_game/widgets/rps_skill_btn.dart';
-import 'package:muitsu_arked/platform_image.dart';
+import 'package:muitsu_arked/components/platform_image.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants/assets_icon.dart';
+import '../../config/constants/others/assets_icon.dart';
 
 class RpsBattleField extends StatefulWidget {
   const RpsBattleField({super.key});
@@ -66,7 +66,7 @@ class RpsBattleFieldState extends State<RpsBattleField>
           Container(
             width: double.infinity,
             height: double.infinity,
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
           ),
           //Player 1 Char
           RpsPlayer(

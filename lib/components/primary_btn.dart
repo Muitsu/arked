@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants/assets_color.dart';
+import '../config/constants/others/assets_color.dart';
 
 class PrimaryButton extends StatelessWidget {
   final void Function()? onPressed;

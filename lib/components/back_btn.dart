@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants/assets_color.dart';
+import '../config/constants/others/assets_color.dart';
 
 class BackBtn extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;

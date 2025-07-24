@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:muitsu_arked/constants/assets_color.dart';
+import 'package:muitsu_arked/config/constants/others/assets_color.dart';
 
 class DigitalWatch extends StatefulWidget {
   const DigitalWatch({super.key});

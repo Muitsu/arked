@@ -1,5 +1,5 @@
-import '../../constants/assets_char.dart';
-import '../../constants/assets_icon.dart';
+import '../../config/constants/others/assets_char.dart';
+import '../../config/constants/others/assets_icon.dart';
 
 enum RpsGameCharacter {
   greenSlime(

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/constants/assets_color.dart';
-import 'package:muitsu_arked/games/dragon_game/dragon_game.dart';
+import 'package:muitsu_arked/config/constants/others/assets_color.dart';
+import 'package:muitsu_arked/games/unused/dragon_game/dragon_game.dart';
 
-import '../../back_btn.dart';
-import '../../constants/game_constant.dart';
-import '../../constants/responsive_size.dart';
-import '../../platform_image.dart';
-import '../../primary_btn.dart';
+import '../../../components/back_btn.dart';
+import '../../../config/constants/game_constant.dart';
+import '../../../config/constants/responsive_size.dart';
+import '../../../components/platform_image.dart';
+import '../../../components/primary_btn.dart';
 
 class DragonSplash extends StatefulWidget {
   const DragonSplash({super.key});
@@ -35,7 +35,7 @@ class _DragonSplashState extends State<DragonSplash> {
           Container(
             width: double.infinity,
             height: double.infinity,
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withValues(alpha: 0.2),
           ),
           SizedBox(
             height: double.infinity,

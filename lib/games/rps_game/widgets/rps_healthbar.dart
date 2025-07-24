@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
-import 'package:muitsu_arked/platform_image.dart';
+import 'package:muitsu_arked/components/platform_image.dart';
 
-import '../../../constants/assets_color.dart';
+import '../../../config/constants/others/assets_color.dart';
 
 class RpsHealthBar extends StatelessWidget {
   const RpsHealthBar(
@@ -30,7 +30,7 @@ class RpsHealthBar extends StatelessWidget {
       height: height,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-          // color: AssetsColor.blackMatte.withOpacity(0.8),
+          // color: AssetsColor.blackMatte.withValues(alpha:0.8),
           borderRadius: BorderRadius.circular(4)),
       child: Stack(
         children: [

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/constants/assets_color.dart';
-import 'package:muitsu_arked/constants/assets_icon.dart';
-import 'package:muitsu_arked/digital_watch.dart';
-import 'package:muitsu_arked/platform_image.dart';
+import 'package:muitsu_arked/config/constants/others/assets_color.dart';
+import 'package:muitsu_arked/config/constants/others/assets_icon.dart';
+import 'package:muitsu_arked/components/digital_watch.dart';
+import 'package:muitsu_arked/components/platform_image.dart';
 
-import 'constants/game_constant.dart';
-import 'constants/responsive_size.dart';
-import 'custom_page_transition.dart';
-import 'darken_edge_filter.dart';
+import 'config/constants/game_constant.dart';
+import 'config/constants/responsive_size.dart';
+import 'components/custom_page_transition.dart';
+import 'components/darken_edge_filter.dart';
 import 'game_selection.dart';
-import 'logout_dialog.dart';
+import 'components/logout_dialog.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,10 +32,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, aa) {
+        if (!didPop) return;
         _logout();
-        return false;
       },
       child: Scaffold(
         backgroundColor: AssetsColor.blackMatte,
@@ -119,8 +120,8 @@ class _HomePageState extends State<HomePage> {
                                     vertical: 10.0, horizontal: 16),
                                 foregroundColor: AssetsColor.whiteMatte,
                                 surfaceTintColor: AssetsColor.whiteMatte,
-                                backgroundColor:
-                                    AssetsColor.whiteMatte.withOpacity(0.3)),
+                                backgroundColor: AssetsColor.whiteMatte
+                                    .withValues(alpha: 0.3)),
                             child: Text(
                               'Play',
                               style: TextStyle(

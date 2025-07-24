@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../../platform_image.dart';
+import '../../../components/platform_image.dart';
 
 class RpsSkillBtn extends StatefulWidget {
   final void Function()? onTap;

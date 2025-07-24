@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/constants/assets_color.dart';
-import 'package:muitsu_arked/constants/assets_icon.dart';
+import 'package:muitsu_arked/config/constants/others/assets_color.dart';
+import 'package:muitsu_arked/config/constants/others/assets_icon.dart';
 import 'package:muitsu_arked/custom_page_transition.dart';
 import 'package:muitsu_arked/landing_page.dart';
 import 'package:muitsu_arked/platform_image.dart';

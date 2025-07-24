@@ -2,14 +2,14 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/custom_page_transition.dart';
+import 'package:muitsu_arked/components/custom_page_transition.dart';
 import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
 import 'package:muitsu_arked/games/rps_game/rps_game_utils.dart';
 import 'package:muitsu_arked/games/rps_game/rps_loading_page.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants/assets_color.dart';
-import '../../platform_image.dart';
+import '../../config/constants/others/assets_color.dart';
+import '../../components/platform_image.dart';
 
 class RpsRandomAI extends StatefulWidget {
   const RpsRandomAI({super.key});
@@ -28,13 +28,14 @@ class _RpsRandomAIState extends State<RpsRandomAI> {
     rpsUtils = Provider.of<RpsGameUtils>(context, listen: false);
     timer = Timer.periodic(
         const Duration(milliseconds: 200), (Timer t) => _shuffle());
-    Future.delayed(const Duration(seconds: 5), () => timer!.cancel()).then(
-        (value) => Future.delayed(
-            const Duration(milliseconds: 1500),
-            () => Navigator.pushReplacement(
-                context,
-                CustomPageTransition.fadeToPage(
-                    page: const RpsLoadingPage()))));
+    Future
+        .delayed(const Duration(seconds: 5),
+            () => timer!.cancel()).then((value) => Future.delayed(
+        const Duration(milliseconds: 1500),
+        () => Navigator.pushReplacement(
+            // ignore: use_build_context_synchronously
+            context,
+            CustomPageTransition.fadeToPage(page: const RpsLoadingPage()))));
 
     super.initState();
   }

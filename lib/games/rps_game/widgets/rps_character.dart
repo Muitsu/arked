@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
-import '../../../constants/assets_color.dart';
-import '../../../constants/assets_icon.dart';
-import '../../../platform_image.dart';
+import '../../../config/constants/others/assets_color.dart';
+import '../../../config/constants/others/assets_icon.dart';
+import '../../../components/platform_image.dart';
 
 class RpsCharacter extends StatelessWidget {
   final bool isEnemy;

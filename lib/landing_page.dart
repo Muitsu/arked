@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:muitsu_arked/constants/responsive_size.dart';
+import 'package:muitsu_arked/config/constants/responsive_size.dart';
 import 'package:muitsu_arked/home_page.dart';
 
-import 'constants/assets_color.dart';
-import 'custom_page_transition.dart';
+import 'config/constants/others/assets_color.dart';
+import 'components/custom_page_transition.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});

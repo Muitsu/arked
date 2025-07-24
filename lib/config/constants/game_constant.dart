@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../games/dragon_game/dragon_splash.dart';
-import '../games/rps_game/rps_splash.dart';
-import '../games/ttt_game/ttt_splash.dart';
-import 'assets_bg.dart';
-import 'assets_icon.dart';
+import '../../games/unused/dragon_game/dragon_splash.dart';
+import '../../games/rps_game/rps_splash.dart';
+import '../../games/unused/ttt_game/ttt_splash.dart';
+import 'others/assets_bg.dart';
+import 'others/assets_icon.dart';
 
 enum GameConstant {
   rps(

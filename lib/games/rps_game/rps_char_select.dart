@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/constants/assets_color.dart';
+import 'package:muitsu_arked/config/constants/others/assets_color.dart';
 import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
 import 'package:muitsu_arked/games/rps_game/rps_game_utils.dart';
 import 'package:muitsu_arked/games/rps_game/rps_random_ai.dart';
-import 'package:muitsu_arked/primary_btn.dart';
-import 'package:muitsu_arked/trapezium_container.dart';
+import 'package:muitsu_arked/components/primary_btn.dart';
+import 'package:muitsu_arked/components/trapezium_container.dart';
 import 'package:provider/provider.dart';
 
-import '../../back_btn.dart';
-import '../../platform_image.dart';
+import '../../components/back_btn.dart';
+import '../../components/platform_image.dart';
 
 class RpsCharSelect extends StatefulWidget {
   const RpsCharSelect({super.key});

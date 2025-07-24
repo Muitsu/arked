@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:muitsu_arked/constants/assets_color.dart';
+import 'package:muitsu_arked/config/constants/others/assets_color.dart';
 import 'package:muitsu_arked/games/rps_game/rps_battle_field.dart';
 import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
 import 'package:muitsu_arked/games/rps_game/rps_game_utils.dart';
 import 'package:provider/provider.dart';
-import '../../custom_page_transition.dart';
-import '../../platform_image.dart';
+import '../../components/custom_page_transition.dart';
+import '../../components/platform_image.dart';
 
 class RpsLoadingPage extends StatefulWidget {
   const RpsLoadingPage({super.key});
@@ -23,6 +23,7 @@ class _RpsLoadingPageState extends State<RpsLoadingPage> {
   void initState() {
     super.initState();
     rpsUtils = Provider.of<RpsGameUtils>(context, listen: false);
+    // ignore: use_build_context_synchronously
     _progressCount().then((value) => Navigator.pushReplacement(context,
         CustomPageTransition.fadeToPage(page: const RpsBattleField())));
   }
@@ -37,8 +38,8 @@ class _RpsLoadingPageState extends State<RpsLoadingPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Scaffold(
           extendBody: true,
           extendBodyBehindAppBar: true,

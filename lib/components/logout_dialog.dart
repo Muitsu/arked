@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/primary_btn.dart';
+import 'package:muitsu_arked/components/primary_btn.dart';
 
 class LogoutDialog extends StatelessWidget {
   const LogoutDialog({
@@ -9,8 +9,8 @@ class LogoutDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async => true,
+    return PopScope(
+      canPop: true,
       child: GestureDetector(
         onTap: () => Navigator.pop(context),
         child: Material(

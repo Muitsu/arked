@@ -1,10 +1,12 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../joystick.dart';
+import '../../../components/joystick.dart';
 import 'dragon_character.dart';
 
 class DragonGame extends StatelessWidget {

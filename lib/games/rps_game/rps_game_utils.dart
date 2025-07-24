@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
 import 'package:muitsu_arked/games/rps_game/widgets/rps_notify.dart';
 
-import '../../logout_dialog.dart';
+import '../../components/logout_dialog.dart';
 
 class RpsGameUtils extends ChangeNotifier {
   int player1Hp = 5;
@@ -131,8 +131,8 @@ class PlayerMoveDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
-    return WillPopScope(
-      onWillPop: () async => true,
+    return PopScope(
+      canPop: true,
       child: GestureDetector(
         onTap: () {},
         child: Material(

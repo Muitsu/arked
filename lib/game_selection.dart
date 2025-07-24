@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/constants/responsive_size.dart';
-import 'package:muitsu_arked/platform_image.dart';
+import 'package:muitsu_arked/config/constants/responsive_size.dart';
+import 'package:muitsu_arked/components/platform_image.dart';
 
 class GameSelection extends StatelessWidget {
   const GameSelection(
