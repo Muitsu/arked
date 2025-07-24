@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../games/unused/dragon_game/dragon_splash.dart';
-import '../../games/rps_game/rps_splash.dart';
-import '../../games/unused/ttt_game/ttt_splash.dart';
+import '../../modules/unused/dragon_game/dragon_splash.dart';
+import '../../modules/home/home_page.dart';
+import '../../modules/unused/ttt_game/ttt_splash.dart';
 import 'others/assets_bg.dart';
 import 'others/assets_icon.dart';
 
@@ -9,7 +9,7 @@ enum GameConstant {
   rps(
       title: 'Rps Game',
       desc: 'Rock, Paper, Scissors!!, but look epic.',
-      page: RpsSplash(),
+      page: HomePage(),
       bg: AssetsBg.bgRps,
       icon: AssetsIcon.rps),
   dragon(

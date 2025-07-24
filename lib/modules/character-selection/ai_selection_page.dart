@@ -3,39 +3,39 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:muitsu_arked/components/custom_page_transition.dart';
-import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
-import 'package:muitsu_arked/games/rps_game/rps_game_utils.dart';
-import 'package:muitsu_arked/games/rps_game/rps_loading_page.dart';
+import 'package:muitsu_arked/config/constants/game-asset/character_asset.dart';
+import 'package:muitsu_arked/modules/battle_field_provider.dart';
+import 'package:muitsu_arked/modules/battle-field/battle_field_loading_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../config/constants/others/assets_color.dart';
 import '../../components/platform_image.dart';
 
-class RpsRandomAI extends StatefulWidget {
-  const RpsRandomAI({super.key});
+class AISelectionPage extends StatefulWidget {
+  const AISelectionPage({super.key});
 
   @override
-  State<RpsRandomAI> createState() => _RpsRandomAIState();
+  State<AISelectionPage> createState() => _AISelectionPageState();
 }
 
-class _RpsRandomAIState extends State<RpsRandomAI> {
+class _AISelectionPageState extends State<AISelectionPage> {
   Timer? timer;
-  final characters = RpsGameCharacter.values;
-  late RpsGameUtils rpsUtils;
+  final characters = CharacterAsset.values;
+  late BattleFieldProvider rpsUtils;
 
   @override
   void initState() {
-    rpsUtils = Provider.of<RpsGameUtils>(context, listen: false);
+    rpsUtils = Provider.of<BattleFieldProvider>(context, listen: false);
     timer = Timer.periodic(
         const Duration(milliseconds: 200), (Timer t) => _shuffle());
-    Future
-        .delayed(const Duration(seconds: 5),
-            () => timer!.cancel()).then((value) => Future.delayed(
-        const Duration(milliseconds: 1500),
-        () => Navigator.pushReplacement(
-            // ignore: use_build_context_synchronously
-            context,
-            CustomPageTransition.fadeToPage(page: const RpsLoadingPage()))));
+    Future.delayed(const Duration(seconds: 5), () => timer!.cancel()).then(
+        (value) => Future.delayed(
+            const Duration(milliseconds: 1500),
+            () => Navigator.pushReplacement(
+                // ignore: use_build_context_synchronously
+                context,
+                CustomPageTransition.fadeToPage(
+                    page: const BattleFieldLoadingPage()))));
 
     super.initState();
   }
@@ -57,12 +57,13 @@ class _RpsRandomAIState extends State<RpsRandomAI> {
               width: size.width * 0.3,
               color: const Color(0xFFAF4C4C),
               padding: const EdgeInsets.all(10),
-              child: context.watch<RpsGameUtils>().getCharP2 != null
+              child: context.watch<BattleFieldProvider>().getCharP2 != null
                   ? PlatformAwareAssetImage(
                       width: size.width * 0.1,
                       height: size.width * 0.1,
                       fit: BoxFit.scaleDown,
-                      asset: context.watch<RpsGameUtils>().getCharP2!.front,
+                      asset:
+                          context.watch<BattleFieldProvider>().getCharP2!.front,
                     )
                   : Icon(
                       Icons.help_outline_rounded,
@@ -106,7 +107,7 @@ class _RpsRandomAIState extends State<RpsRandomAI> {
                       decoration: BoxDecoration(
                           color: const Color(0xFFDCCFCB),
                           border: characters[index] ==
-                                  context.watch<RpsGameUtils>().getCharP2
+                                  context.watch<BattleFieldProvider>().getCharP2
                               ? Border.all(color: Colors.red, width: 3)
                               : null),
                       margin:

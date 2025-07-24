@@ -4,21 +4,21 @@ import 'package:muitsu_arked/config/constants/others/assets_icon.dart';
 import 'package:muitsu_arked/components/digital_watch.dart';
 import 'package:muitsu_arked/components/platform_image.dart';
 
-import 'config/constants/game_constant.dart';
-import 'config/constants/responsive_size.dart';
-import 'components/custom_page_transition.dart';
-import 'components/darken_edge_filter.dart';
+import '../../config/constants/game_constant.dart';
+import '../../config/constants/responsive_size.dart';
+import '../../components/custom_page_transition.dart';
+import '../../components/darken_edge_filter.dart';
 import 'game_selection.dart';
-import 'components/logout_dialog.dart';
+import '../../components/logout_dialog.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePageOld extends StatefulWidget {
+  const HomePageOld({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePageOld> createState() => _HomePageOldState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageOldState extends State<HomePageOld> {
   List<GameConstant> games = GameConstant.values;
   int currInd = 0;
   _logout() {

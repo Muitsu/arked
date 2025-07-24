@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muitsu_arked/config/app_initializer.dart';
 import 'package:muitsu_arked/config/provider/app_providers.dart';
-import 'package:muitsu_arked/splash_page.dart';
+import 'package:muitsu_arked/modules/startup/splash_page.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

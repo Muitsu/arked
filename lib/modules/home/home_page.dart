@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:muitsu_arked/config/constants/others/assets_color.dart';
 import 'package:muitsu_arked/components/custom_page_transition.dart';
-import 'package:muitsu_arked/games/rps_game/rps_char_select.dart';
-import 'package:muitsu_arked/games/rps_game/rps_game_utils.dart';
+import 'package:muitsu_arked/modules/character-selection/character_selection_page.dart';
+import 'package:muitsu_arked/modules/battle_field_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/back_btn.dart';
@@ -11,14 +11,14 @@ import '../../config/constants/responsive_size.dart';
 import '../../components/platform_image.dart';
 import '../../components/primary_btn.dart';
 
-class RpsSplash extends StatefulWidget {
-  const RpsSplash({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<RpsSplash> createState() => _RpsSplashState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _RpsSplashState extends State<RpsSplash> {
+class _HomePageState extends State<HomePage> {
   GameConstant game = GameConstant.rps;
   @override
   Widget build(BuildContext context) {
@@ -76,11 +76,13 @@ class _RpsSplashState extends State<RpsSplash> {
                         width: size.width * 0.26,
                         height: MediaQuery.of(context).size.width * 0.05,
                         onPressed: () {
-                          context.read<RpsGameUtils>().setCharP2(char: null);
+                          context
+                              .read<BattleFieldProvider>()
+                              .setCharP2(char: null);
                           Navigator.push(
                               context,
                               CustomPageTransition.slideToPage(
-                                  page: const RpsCharSelect(),
+                                  page: const CharacterSelectionPage(),
                                   slide: SlideFrom.right));
                         }),
                     const SizedBox(height: 12),

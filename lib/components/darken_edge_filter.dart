@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class DarkenEdgeFilter extends StatelessWidget {
   final List<Color>? colors;
+  final bool isDarken;
   const DarkenEdgeFilter({
     super.key,
     this.colors,
+    this.isDarken = true,
   });
 
   @override
@@ -28,10 +30,13 @@ class DarkenEdgeFilter extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          width: double.infinity,
-          height: double.infinity,
-          color: Colors.black.withValues(alpha: 0.4),
+        Visibility(
+          visible: isDarken,
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            color: Colors.black.withValues(alpha: 0.4),
+          ),
         )
       ],
     );

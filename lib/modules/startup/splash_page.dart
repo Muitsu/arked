@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:muitsu_arked/config/constants/others/assets_color.dart';
 import 'package:muitsu_arked/config/constants/others/assets_icon.dart';
-import 'package:muitsu_arked/custom_page_transition.dart';
-import 'package:muitsu_arked/landing_page.dart';
-import 'package:muitsu_arked/platform_image.dart';
+import 'package:muitsu_arked/components/custom_page_transition.dart';
+import 'package:muitsu_arked/modules/startup/landing_page.dart';
+import 'package:muitsu_arked/components/platform_image.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

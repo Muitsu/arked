@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../../components/platform_image.dart';
+import '../../components/platform_image.dart';
 
-class RpsSkillBtn extends StatefulWidget {
+class SkillButton extends StatefulWidget {
   final void Function()? onTap;
   final String skillName;
   final String asset;
-  const RpsSkillBtn(
+  const SkillButton(
       {super.key, this.onTap, required this.skillName, required this.asset});
 
   @override
-  State<RpsSkillBtn> createState() => _RpsSkillBtnState();
+  State<SkillButton> createState() => _SkillButtonState();
 }
 
-class _RpsSkillBtnState extends State<RpsSkillBtn> {
+class _SkillButtonState extends State<SkillButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

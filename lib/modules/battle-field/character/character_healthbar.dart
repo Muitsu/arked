@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
 import 'package:muitsu_arked/components/platform_image.dart';
+import 'package:muitsu_arked/config/constants/game-asset/character_asset.dart';
 
 import '../../../config/constants/others/assets_color.dart';
 
-class RpsHealthBar extends StatelessWidget {
-  const RpsHealthBar(
+class CharacterHealthbar extends StatelessWidget {
+  const CharacterHealthbar(
       {super.key,
       required this.playerHp,
       this.width = 300,
@@ -13,7 +13,7 @@ class RpsHealthBar extends StatelessWidget {
       required this.playerName,
       this.maxHp = 5,
       this.isEnemy = false,
-      this.character = RpsGameCharacter.rimuru});
+      this.character = CharacterAsset.rimuru});
 
   final int playerHp;
   final bool isEnemy;
@@ -21,7 +21,7 @@ class RpsHealthBar extends StatelessWidget {
   final double? width;
   final double? height;
   final String playerName;
-  final RpsGameCharacter character;
+  final CharacterAsset character;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muitsu_arked/config/constants/others/assets_color.dart';
-import 'package:muitsu_arked/games/unused/dragon_game/dragon_game.dart';
+import 'package:muitsu_arked/modules/unused/ttt_game/ttt_game.dart';
 
 import '../../../components/back_btn.dart';
 import '../../../config/constants/game_constant.dart';
@@ -8,15 +8,15 @@ import '../../../config/constants/responsive_size.dart';
 import '../../../components/platform_image.dart';
 import '../../../components/primary_btn.dart';
 
-class DragonSplash extends StatefulWidget {
-  const DragonSplash({super.key});
+class TttSplash extends StatefulWidget {
+  const TttSplash({super.key});
 
   @override
-  State<DragonSplash> createState() => _DragonSplashState();
+  State<TttSplash> createState() => _TttSplashState();
 }
 
-class _DragonSplashState extends State<DragonSplash> {
-  GameConstant game = GameConstant.dragon;
+class _TttSplashState extends State<TttSplash> {
+  GameConstant game = GameConstant.ttt;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -69,20 +69,23 @@ class _DragonSplashState extends State<DragonSplash> {
                     ),
                     const Spacer(),
                     PrimaryButton(
-                      title: 'Play',
+                      title: 'Solo',
+                      width: size.width * 0.26,
+                      height: MediaQuery.of(context).size.width * 0.05,
+                      onPressed: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const TttGame())),
+                    ),
+                    const SizedBox(height: 12),
+                    PrimaryButton(
+                      title: 'Competitive',
                       width: size.width * 0.26,
                       height: MediaQuery.of(context).size.width * 0.05,
                       onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => const DragonGame())),
-                    ),
-                    const SizedBox(height: 12),
-                    PrimaryButton(
-                      title: 'Control',
-                      width: size.width * 0.26,
-                      height: MediaQuery.of(context).size.width * 0.05,
-                      onPressed: () {},
+                              builder: (_) => const TttGame(
+                                    isTwoPlayer: true,
+                                  ))),
                     ),
                     const SizedBox(height: 12),
                     PrimaryButton(

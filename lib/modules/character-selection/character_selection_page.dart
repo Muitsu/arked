@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:muitsu_arked/config/constants/game-asset/character_asset.dart';
 import 'package:muitsu_arked/config/constants/others/assets_color.dart';
-import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
-import 'package:muitsu_arked/games/rps_game/rps_game_utils.dart';
-import 'package:muitsu_arked/games/rps_game/rps_random_ai.dart';
+import 'package:muitsu_arked/modules/battle_field_provider.dart';
+import 'package:muitsu_arked/modules/character-selection/ai_selection_page.dart';
 import 'package:muitsu_arked/components/primary_btn.dart';
 import 'package:muitsu_arked/components/trapezium_container.dart';
 import 'package:provider/provider.dart';
@@ -10,20 +10,20 @@ import 'package:provider/provider.dart';
 import '../../components/back_btn.dart';
 import '../../components/platform_image.dart';
 
-class RpsCharSelect extends StatefulWidget {
-  const RpsCharSelect({super.key});
+class CharacterSelectionPage extends StatefulWidget {
+  const CharacterSelectionPage({super.key});
 
   @override
-  State<RpsCharSelect> createState() => _RpsCharSelectState();
+  State<CharacterSelectionPage> createState() => _CharacterSelectionPageState();
 }
 
-class _RpsCharSelectState extends State<RpsCharSelect> {
-  late RpsGameUtils rpsUtils;
-  final characters = RpsGameCharacter.values;
+class _CharacterSelectionPageState extends State<CharacterSelectionPage> {
+  late BattleFieldProvider rpsUtils;
+  final characters = CharacterAsset.values;
   @override
   void initState() {
     super.initState();
-    rpsUtils = Provider.of<RpsGameUtils>(context, listen: false);
+    rpsUtils = Provider.of<BattleFieldProvider>(context, listen: false);
   }
 
   @override
@@ -41,8 +41,8 @@ class _RpsCharSelectState extends State<RpsCharSelect> {
       body: Stack(
         children: [
           RpsCharSelectBg(
-            char1: context.watch<RpsGameUtils>().getCharP1,
-            char2: context.watch<RpsGameUtils>().getCharP2,
+            char1: context.watch<BattleFieldProvider>().getCharP1,
+            char2: context.watch<BattleFieldProvider>().getCharP2,
           ),
           SizedBox(
             height: size.height,
@@ -74,7 +74,7 @@ class _RpsCharSelectState extends State<RpsCharSelect> {
                                   color: const Color(0xFFDCCFCB),
                                   border: characters[index] ==
                                           context
-                                              .watch<RpsGameUtils>()
+                                              .watch<BattleFieldProvider>()
                                               .getCharP1
                                       ? Border.all(
                                           color: Colors.orange, width: 3)
@@ -101,7 +101,7 @@ class _RpsCharSelectState extends State<RpsCharSelect> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => const RpsRandomAI()));
+                                    builder: (_) => const AISelectionPage()));
                           },
                           title: 'Start Game'),
                     ))
@@ -115,8 +115,8 @@ class _RpsCharSelectState extends State<RpsCharSelect> {
 }
 
 class RpsCharSelectBg extends StatelessWidget {
-  final RpsGameCharacter? char1;
-  final RpsGameCharacter? char2;
+  final CharacterAsset? char1;
+  final CharacterAsset? char2;
   const RpsCharSelectBg({
     super.key,
     this.char1,

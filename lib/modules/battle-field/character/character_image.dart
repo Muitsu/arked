@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
+import 'package:muitsu_arked/config/constants/game-asset/character_asset.dart';
 import '../../../config/constants/others/assets_color.dart';
 import '../../../config/constants/others/assets_icon.dart';
 import '../../../components/platform_image.dart';
 
-class RpsCharacter extends StatelessWidget {
+class CharacterImage extends StatelessWidget {
   final bool isEnemy;
   final bool showMove;
   final String asset;
-  final RpsGameCharacter character;
-  const RpsCharacter(
+  final CharacterAsset character;
+  const CharacterImage(
       {super.key,
       this.isEnemy = false,
       this.showMove = false,
       this.asset = AssetsIcon.handRock,
-      this.character = RpsGameCharacter.rimuru});
+      this.character = CharacterAsset.rimuru});
 
   @override
   Widget build(BuildContext context) {

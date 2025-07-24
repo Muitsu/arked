@@ -1,4 +1,4 @@
-import 'package:muitsu_arked/games/rps_game/rps_game_utils.dart';
+import 'package:muitsu_arked/modules/battle_field_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -7,6 +7,6 @@ class AppProviders {
   static List<SingleChildWidget> get providers => _providers;
   //Register provider here
   static final List<SingleChildWidget> _providers = [
-    ChangeNotifierProvider(create: ((context) => RpsGameUtils()))
+    ChangeNotifierProvider(create: ((context) => BattleFieldProvider()))
   ];
 }

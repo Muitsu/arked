@@ -3,20 +3,21 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:muitsu_arked/games/rps_game/rps_constants.dart';
-import 'package:muitsu_arked/games/rps_game/widgets/rps_notify.dart';
+import 'package:muitsu_arked/config/constants/game-asset/character_asset.dart';
+import 'package:muitsu_arked/config/constants/game-asset/skills_asset.dart';
+import 'package:muitsu_arked/components/skill_notification.dart';
 
-import '../../components/logout_dialog.dart';
+import '../components/logout_dialog.dart';
 
-class RpsGameUtils extends ChangeNotifier {
+class BattleFieldProvider extends ChangeNotifier {
   int player1Hp = 5;
   int player2Hp = 5;
   int player1MaxHp = 5;
   int player2MaxHp = 5;
-  Choice player1Choice = Choice.paper;
-  Choice player2Choice = Choice.paper;
-  RpsGameCharacter charP1 = RpsGameCharacter.greenSlime;
-  RpsGameCharacter? charP2;
+  SkillsAsset player1Choice = SkillsAsset.paper;
+  SkillsAsset player2Choice = SkillsAsset.paper;
+  CharacterAsset charP1 = CharacterAsset.greenSlime;
+  CharacterAsset? charP2;
   bool? isWinning;
   bool isLoading = false;
   bool showMove = false;
@@ -24,18 +25,18 @@ class RpsGameUtils extends ChangeNotifier {
   int get getPlayer2Hp => player2Hp;
   int get getPlayer1MaxHp => player1MaxHp;
   int get getPlayer2MaxHp => player2MaxHp;
-  RpsGameCharacter get getCharP1 => charP1;
-  RpsGameCharacter? get getCharP2 => charP2;
-  Choice get getPlayer1Choice => player1Choice;
-  Choice get getPlayer2Choice => player2Choice;
+  CharacterAsset get getCharP1 => charP1;
+  CharacterAsset? get getCharP2 => charP2;
+  SkillsAsset get getPlayer1Choice => player1Choice;
+  SkillsAsset get getPlayer2Choice => player2Choice;
   bool get isGameLoading => isLoading;
   bool get isShowMove => showMove;
 
   void startGame(
       {int? initP1Hp, int? initP2Hp, required BuildContext context}) async {
     isLoading = true;
-    player1Choice = Choice.paper;
-    player2Choice == Choice.paper;
+    player1Choice = SkillsAsset.paper;
+    player2Choice == SkillsAsset.paper;
     player1Hp = initP1Hp ?? player1MaxHp;
     player2Hp = initP2Hp ?? player2MaxHp;
     player1MaxHp = initP1Hp ?? player1MaxHp;
@@ -51,7 +52,7 @@ class RpsGameUtils extends ChangeNotifier {
   }
 
   void playerMove({
-    required Choice choice,
+    required SkillsAsset choice,
     required BuildContext context,
     required AnimationController p1Ctrl,
     required AnimationController p2Ctrl,
@@ -60,24 +61,26 @@ class RpsGameUtils extends ChangeNotifier {
       isLoading = true;
       showMove = true;
       player1Choice = choice;
-      player2Choice = generateComputerChoice();
+      player2Choice = _generateComputerChoice();
       await Future.delayed(const Duration(milliseconds: 1500));
       if (player1Choice == player2Choice) {
         isWinning = null;
-        RpsNotify.notiShield(context, msg: 'Dodge enemy attack');
-      } else if ((player1Choice == Choice.rock &&
-              player2Choice == Choice.scissors) ||
-          (player1Choice == Choice.paper && player2Choice == Choice.rock) ||
-          (player1Choice == Choice.scissors && player2Choice == Choice.paper)) {
+        await SkillNotification.notiShield(context, msg: 'Dodge enemy attack');
+      } else if ((player1Choice == SkillsAsset.rock &&
+              player2Choice == SkillsAsset.scissors) ||
+          (player1Choice == SkillsAsset.paper &&
+              player2Choice == SkillsAsset.rock) ||
+          (player1Choice == SkillsAsset.scissors &&
+              player2Choice == SkillsAsset.paper)) {
         isWinning = true;
         player2Hp--;
         p2Ctrl.forward(from: 0);
-        RpsNotify.notiAttack(context, msg: 'Attack Hit');
+        SkillNotification.notiAttack(context, msg: 'Attack Hit');
       } else {
         isWinning = false;
         player1Hp--;
         p1Ctrl.forward(from: 0);
-        RpsNotify.notiEnemy(context, msg: 'Enemy Attack');
+        await SkillNotification.notiEnemy(context, msg: 'Enemy Attack');
       }
       showMove = false;
       isLoading = false;
@@ -96,9 +99,9 @@ class RpsGameUtils extends ChangeNotifier {
     notifyListeners();
   }
 
-  Choice generateComputerChoice() {
+  SkillsAsset _generateComputerChoice() {
     final random = Random();
-    const choices = Choice.values;
+    const choices = SkillsAsset.values;
     notifyListeners();
     return choices[random.nextInt(choices.length)];
   }
@@ -113,12 +116,12 @@ class RpsGameUtils extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setCharP1({required RpsGameCharacter char}) async {
+  void setCharP1({required CharacterAsset char}) async {
     charP1 = char;
     notifyListeners();
   }
 
-  void setCharP2({RpsGameCharacter? char}) async {
+  void setCharP2({CharacterAsset? char}) async {
     charP2 = char;
     notifyListeners();
   }
